@@ -42,7 +42,7 @@ Endpoint, Route.
 | `tuneups` | Bidirectional | Both | Protocol bookkeeping | HVAC tuneup/maintenance reminders from Nest's cloud service |
 
 **Verdict counts:** 4 user-facing (all conditional on utility program enrollment),
-10 protocol bookkeeping, 4 unknown and inert.
+11 protocol bookkeeping, 3 unknown and inert.
 
 ---
 
