@@ -39,8 +39,8 @@ The address and port the Integration listens on.
 _Avoid_: conflating with the Advertised URL — they are deliberately independent.
 
 **Advertised URL**:
-The base URL the Integration tells the Thermostat to call back on. Distinct from the Bind address because what we listen on and what is reachable from the Thermostat need not match.
-_Avoid_: "our address", "the endpoint" (that is the Thermostat's copy of this value).
+The base URL the Integration tells the Thermostat to call back on. Distinct from the Bind address because what we listen on and what is reachable from the Thermostat need not match. It is always an address on the Thermostat's own network — a host reachable from the internet is never one of these, however the Integration's host is published to the outside world.
+_Avoid_: "our address", "the endpoint" (that is the Thermostat's copy of this value), "the public URL" or "the external URL" (those name how humans reach Home Assistant, which the Thermostat never uses).
 
 **Settings API**:
 The small HTTP API the Firmware serves on the Thermostat itself, used to read and set its Endpoint.

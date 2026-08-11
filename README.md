@@ -41,9 +41,12 @@ These override anything in `reference/PLAN.md`, which predates them.
 - **Build our own server as an HA custom integration.** Native entities, no MQTT hop,
   no second container.
 - **We are not running NoLongerEvil's server.** Not as a baseline, not as a fallback,
-  not to capture traffic. To get ground truth on what the device actually sends, have
-  our own server log raw requests from its first boot; that is the same capture
-  without a second container and an MQTT hop.
+  not to capture traffic. To get ground truth on what the device actually sends, read
+  raw requests out of our own integration's debug log from its first boot; that is the
+  same capture without a second container and an MQTT hop. To be clear about what this
+  is: it is Home Assistant's ordinary per-integration debug logging, switched on from
+  the config entry. It is not a logging feature we build, and nothing is written to
+  disk in a format of our own.
 - **His server is a protocol reference only — no code is copied from it.** Read it to
   understand what the spec leaves out, then write our own implementation. Its licence
   would permit copying with attribution, but reading-not-copying avoids the
