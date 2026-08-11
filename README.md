@@ -66,6 +66,13 @@ only way in. That is the firmware, not the server — the two decisions are inde
 ```
 CONTEXT.md            Glossary. Source of truth for what each term means.
 reference/            Research materials. Read-only in spirit — nothing here is code we ship.
+  NoLongerEvil-SelfHosted/
+                      Reference clone of codykociemba/NoLongerEvil-SelfHosted (MIT),
+                      gitignored — re-clone it, never edit it. Read for what the
+                      protocol spec omits: weather_url, upload_url, pro_info_url,
+                      /info. Protocol core is src/nolongerevil/routes/nest/transport.py.
+                      MIT means we may lift code, but copied portions must carry
+                      Cody Kociemba's copyright notice.
   PLAN.md             The original research doc. AI-generated, unverified, superseded in parts.
   scripts/
     00-preflight.sh   Pre-flash checks: host/libusb/udev, port scan, settings checklist.
