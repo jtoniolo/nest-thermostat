@@ -21,7 +21,7 @@ The Home Assistant custom integration being built here. It both answers the Ther
 _Avoid_: "our server" (the server is one half of it), "the client" (the Thermostat is the client, not us).
 
 **NLE server**:
-Cody Kociemba's self-hosted server. A peer implementation of the same Firmware contract — read as reference, never run here.
+Cody Kociemba's self-hosted server. A peer implementation of the same Firmware contract — read as a protocol reference, never run here and never copied from.
 _Avoid_: "the server" unqualified, "upstream" (nothing flows from it to us).
 
 ### Addressing

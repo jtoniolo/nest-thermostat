@@ -21,10 +21,13 @@ These override anything in `reference/PLAN.md`, which predates them.
 - **Build our own server as an HA custom integration.** Native entities, no MQTT hop,
   no second container.
 - **We are not running NoLongerEvil's server.** Not as a baseline, not as a fallback,
-  not to capture traffic. His repo is MIT — read the source for the parts the protocol
-  spec doesn't cover and lift what's needed. To get ground truth on what the device
-  actually sends, have our own server log raw requests from its first boot; that is
-  the same capture without a second container and an MQTT hop.
+  not to capture traffic. To get ground truth on what the device actually sends, have
+  our own server log raw requests from its first boot; that is the same capture
+  without a second container and an MQTT hop.
+- **His server is a protocol reference only — no code is copied from it.** Read it to
+  understand what the spec leaves out, then write our own implementation. Its licence
+  would permit copying with attribution, but reading-not-copying avoids the
+  attribution bookkeeping entirely and keeps the codebase ours.
 - **No ESPHome wire tap.** Rejected outright. Not building an ESP device for this.
   The `esphome/` config that used to live here has been deleted.
 - **No Sett replacement board.** Staying on the Nest hardware.
@@ -68,11 +71,11 @@ CONTEXT.md            Glossary. Source of truth for what each term means.
 reference/            Research materials. Read-only in spirit — nothing here is code we ship.
   NoLongerEvil-SelfHosted/
                       Reference clone of codykociemba/NoLongerEvil-SelfHosted (MIT),
-                      gitignored — re-clone it, never edit it. Read for what the
-                      protocol spec omits: weather_url, upload_url, pro_info_url,
-                      /info. Protocol core is src/nolongerevil/routes/nest/transport.py.
-                      MIT means we may lift code, but copied portions must carry
-                      Cody Kociemba's copyright notice.
+                      gitignored — re-clone it, never edit it. Protocol reference
+                      ONLY: read it to learn what the spec omits (weather_url,
+                      upload_url, pro_info_url, /info), then write our own. No code
+                      is copied from it. Protocol core is
+                      src/nolongerevil/routes/nest/transport.py.
   PLAN.md             The original research doc. AI-generated, unverified, superseded in parts.
   scripts/
     00-preflight.sh   Pre-flash checks: host/libusb/udev, port scan, settings checklist.
@@ -82,6 +85,25 @@ reference/            Research materials. Read-only in spirit — nothing here i
 ```
 
 The integration will land in `custom_components/nest_local/` when it starts.
+
+## Credits
+
+This project would not be possible without:
+
+- **[Cody Kociemba](https://github.com/codykociemba)** — the
+  [NoLongerEvil firmware](https://github.com/codykociemba/NoLongerEvil-Thermostat),
+  which is what makes a cloud-abandoned thermostat reachable at all, and the
+  [self-hosted server](https://github.com/codykociemba/NoLongerEvil-SelfHosted), read
+  here as a protocol reference.
+- **[cjserio](https://github.com/cjserio)** — the
+  [Nest cloud protocol reference](https://github.com/cjserio/nest-thermostat-protocol-docs),
+  documented against real hardware.
+
+This is an independent implementation. No code is copied from either project.
+
+## License
+
+MIT — see `LICENSE`.
 
 ## Provenance
 
