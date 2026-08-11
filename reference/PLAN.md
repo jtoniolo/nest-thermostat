@@ -11,6 +11,10 @@
 > wins.
 >
 > Do not treat anything below as settled. Check it before acting on it.
+>
+> **In particular: sections 4, 5 and 10 discuss the firmware at length. The firmware is
+> out of scope — it is installed by hand, unchanged, and is not this project's concern.
+> Those sections are background only. Do not raise them as open questions.**
 
 **Written August 2026. Everything checked against live sources. Links at the end.**
 

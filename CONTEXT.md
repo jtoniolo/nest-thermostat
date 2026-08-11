@@ -13,8 +13,8 @@ The physical Nest Learning Thermostat on the wall. Gen 1 or gen 2.
 _Avoid_: "the Nest" (ambiguous with the brand and the deleted Google account), "the display" (that is one part of it), "the device" when a broker or ESP board is also in play.
 
 **Firmware**:
-The NoLongerEvil build running on the Thermostat — Google's own firmware with a certificate and a redirect added. Used as shipped; never rebuilt, forked, or patched here.
-_Avoid_: "custom firmware" (implies a rewrite; it is Google's code), "NLE" alone (ambiguous with the NLE server).
+The NoLongerEvil build running on the Thermostat. Out of scope for this repo — installed by hand, unchanged, and never built, forked, patched or redistributed here. It is a fixed contract the Integration is compatible with, nothing more.
+_Avoid_: "custom firmware" (implies a rewrite), "our firmware" (it is not ours), "NLE" alone (ambiguous with the NLE server).
 
 **Integration**:
 The Home Assistant custom integration being built here. It both answers the Thermostat and exposes the entities.

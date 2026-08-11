@@ -1,10 +1,30 @@
 # nest-thermostat
 
-Getting a **Nest Learning Thermostat gen 2** into Home Assistant as a local-only device,
-after Google shut off the cloud for gen 1 and gen 2 on 25 October 2025.
+Getting a **Nest Learning Thermostat gen 1 or 2** into Home Assistant as a local-only
+device, after Google shut off the cloud for both on 25 October 2025.
 
-The intended deliverable is a **Home Assistant custom integration** that speaks the
-thermostat's protocol directly. Nothing is implemented yet.
+## Scope — read this first
+
+**This repo builds exactly one thing: a Home Assistant custom integration that is an
+alternative to NoLongerEvil's server.** That is the entire project.
+
+**The firmware is out of scope. Permanently.** Cody Kociemba's NoLongerEvil firmware
+gets installed on the thermostat, unchanged, by hand. We do not build it, fork it,
+patch it, rebuild it, wrap it, redistribute it, or have any opinion about its licence.
+It is a fixed thing that already exists on the device, and our only relationship to it
+is that our integration is **compatible with** it — we speak the protocol it expects.
+
+There is a real distinction that keeps getting collapsed, so it is spelled out here:
+
+| | |
+|---|---|
+| Cody's **firmware** | We install it as-is. Never touched. Not our concern. |
+| Cody's **server** | We are writing an alternative to this. This is the project. |
+
+Anyone — human or agent — picking this repo up: do not propose firmware work, do not
+raise firmware licensing, and do not treat `reference/PLAN.md`'s firmware sections as
+open questions. They are settled. The only firmware task that will ever exist here is
+Jeff installing it once, by hand, with a USB cable.
 
 ## Status
 
