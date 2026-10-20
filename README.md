@@ -101,6 +101,7 @@ only way in. That is the firmware, not the server — the two decisions are inde
 ```
 CONTEXT.md            Glossary. Source of truth for what each term means.
 PROTOCOL.md           Protocol spec for the Integration. The build reads only this file.
+docs/QUICKSTART.md    Checklist for the install and the first test.
 reference/            Research materials. Read-only in spirit — nothing here is code we ship.
   NoLongerEvil-SelfHosted/
                       Reference clone of codykociemba/NoLongerEvil-SelfHosted (MIT),
