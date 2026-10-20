@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "The Thermostat calls this server in place of the Nest cloud.",
+        "data": {
+          "port": "Port",
+          "advertised_url": "Advertised URL"
+        },
+        "data_description": {
+          "port": "The port that the server listens on. The Endpoint on the Thermostat must use this port.",
+          "advertised_url": "The URL that the Thermostat calls back on. Use the LAN address of Home Assistant. The server adds the port if the URL has no port."
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Enter an http:// or https:// URL with a host."
+    },
+    "abort": {
+      "already_configured": "EvilAgain is already set up.",
+      "single_instance_allowed": "EvilAgain is already set up."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "fan": { "name": "Fan" }
+    },
+    "sensor": {
+      "battery_voltage": { "name": "Battery voltage" }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+[project]
+name = "nest-local"
+version = "0.1.0"
+description = "Home Assistant integration that serves a Nest thermostat that runs the NoLongerEvil firmware."
+readme = "README.md"
+requires-python = ">=3.14.2"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+extend-exclude = [".claude", "reference"]
+
+[tool.ruff.lint]
+select = ["I", "E", "F", "B", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[dependency-groups]
+dev = [
+    "pytest-homeassistant-custom-component>=0.13.373",
+    "ruff>=0.17.1",
+]

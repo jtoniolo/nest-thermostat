@@ -33,7 +33,7 @@ Jeff installing it once, by hand, with a USB cable.
 | Research | Done. See `reference/PLAN.md` |
 | Thermostat flashed | Yes. It connects to the NLE add-on (Jeff's fork) on port 9543. |
 | Protocol spec | Done. See `PROTOCOL.md` |
-| Integration | Not started |
+| Integration | v0.1.0 built and tested in `custom_components/nest_local/`. Not tested on the Thermostat yet. |
 
 ## Decisions
 
@@ -111,7 +111,13 @@ reference/            Research materials. Read-only in spirit — nothing here i
                       survives; the curl/MQTT half targeted NLE's server and is dead.
 ```
 
-The integration will land in `custom_components/nest_local/` when it starts.
+custom_components/nest_local/
+                      The Integration. Its display name is "EvilAgain".
+  protocol.py         Wire rules: paths, serial, field order. No Home Assistant code.
+  hub.py              The Bucket store and the Subscriptions. No Home Assistant code.
+  server.py           The aiohttp server on its own port. No Home Assistant code.
+  thermostat.py       Reads the state from the Buckets and makes the command deltas.
+tests/                pytest tests. Run `uv run pytest tests`.
 
 ## Credits
 

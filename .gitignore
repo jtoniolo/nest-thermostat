@@ -1,2 +1,6 @@
 *.zip
 reference/NoLongerEvil-SelfHosted/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/

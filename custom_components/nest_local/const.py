@@ -1,0 +1,27 @@
+"""Constants for the nest_local integration."""
+
+DOMAIN = "nest_local"
+NAME = "EvilAgain"
+
+CONF_PORT = "port"
+CONF_ADVERTISED_URL = "advertised_url"
+
+DEFAULT_PORT = 9543
+
+STORAGE_VERSION = 1
+SAVE_DELAY = 5
+
+# Timing constants from PROTOCOL.md section 12, in seconds.
+SUSPEND_TIME_MAX = 300
+HOLD_TIMEOUT = SUSPEND_TIME_MAX - 10
+BATCH_WINDOW = 3
+DEFER_DEVICE_WINDOW = 15
+DISABLE_DEFER_WINDOW = 60
+MAX_SUBSCRIPTIONS = 100
+AVAILABLE_WINDOW = SUSPEND_TIME_MAX + 60
+
+DEFAULT_USER_ID = "nest_local"
+DEFAULT_STRUCTURE_ID = "default"
+
+MIN_TEMP = 9.0
+MAX_TEMP = 32.0
