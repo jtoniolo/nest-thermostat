@@ -1,6 +1,6 @@
 {
   "domain": "nest_local",
-  "name": "EvilAgain",
+  "name": "LocalNestThermostat",
   "codeowners": ["@jtoniolo"],
   "config_flow": true,
   "dependencies": ["network"],

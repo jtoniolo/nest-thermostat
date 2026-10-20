@@ -1,7 +1,7 @@
 """Constants for the nest_local integration."""
 
 DOMAIN = "nest_local"
-NAME = "EvilAgain"
+NAME = "LocalNestThermostat"
 
 CONF_PORT = "port"
 CONF_ADVERTISED_URL = "advertised_url"

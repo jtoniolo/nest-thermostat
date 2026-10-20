@@ -30,7 +30,7 @@ async def test_user_step(hass: HomeAssistant):
             {CONF_PORT: 9543, CONF_ADVERTISED_URL: "http://10.0.0.5"},
         )
     assert result["type"] is FlowResultType.CREATE_ENTRY
-    assert result["title"] == "EvilAgain"
+    assert result["title"] == "LocalNestThermostat"
     assert result["data"] == {
         CONF_PORT: 9543,
         CONF_ADVERTISED_URL: "http://10.0.0.5:9543",

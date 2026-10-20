@@ -1,7 +1,13 @@
-# nest-thermostat
+# LocalNestThermostat (LNT)
 
 Getting a **Nest Learning Thermostat gen 1 or 2** into Home Assistant as a local-only
 device, after Google shut off the cloud for both on 25 October 2025.
+
+LNT exists because of **[Cody Kociemba](https://github.com/codykociemba)** and his
+[NoLongerEvil](https://github.com/codykociemba/NoLongerEvil-Thermostat) project. His
+firmware is the only way to make a cloud-abandoned Nest reachable, and his
+[self-hosted server](https://github.com/codykociemba/NoLongerEvil-SelfHosted) showed
+how the protocol works. Thank you, Cody. See [Credits](#credits).
 
 ## Scope — read this first
 
@@ -112,7 +118,7 @@ reference/            Research materials. Read-only in spirit — nothing here i
 ```
 
 custom_components/nest_local/
-                      The Integration. Its display name is "EvilAgain".
+                      The Integration. Its display name is "LocalNestThermostat".
   protocol.py         Wire rules: paths, serial, field order. No Home Assistant code.
   hub.py              The Bucket store and the Subscriptions. No Home Assistant code.
   server.py           The aiohttp server on its own port. No Home Assistant code.

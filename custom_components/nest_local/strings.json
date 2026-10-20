@@ -17,8 +17,8 @@
       "invalid_url": "Enter an http:// or https:// URL with a host."
     },
     "abort": {
-      "already_configured": "EvilAgain is already set up.",
-      "single_instance_allowed": "EvilAgain is already set up."
+      "already_configured": "LocalNestThermostat is already set up.",
+      "single_instance_allowed": "LocalNestThermostat is already set up."
     }
   },
   "entity": {
