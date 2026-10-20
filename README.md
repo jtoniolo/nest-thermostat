@@ -41,10 +41,12 @@ These override anything in `reference/PLAN.md`, which predates them.
 
 - **Build our own server as an HA custom integration.** Native entities, no MQTT hop,
   no second container.
-- **We are not running NoLongerEvil's server.** Not as a baseline, not as a fallback,
-  not to capture traffic. To get ground truth on what the device actually sends, read
-  raw requests out of our own integration's debug log from its first boot; that is the
-  same capture without a second container and an MQTT hop. To be clear about what this
+- **NoLongerEvil's server runs now only until the Integration replaces it.** Since the
+  flash, the Thermostat connects to the NLE add-on (Jeff's fork, port 9543). It is a
+  temporary bridge, not a baseline and not a fallback. Jeff stops the add-on for the
+  first Integration test, and the Integration takes port 9543. To get ground truth on
+  what the device actually sends, read raw requests out of our own integration's debug
+  log from its first boot. To be clear about what this
   is: it is Home Assistant's ordinary per-integration debug logging, switched on from
   the config entry. It is not a logging feature we build, and nothing is written to
   disk in a format of our own.

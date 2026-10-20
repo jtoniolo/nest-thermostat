@@ -295,7 +295,9 @@ Thermostat processes the bucket either way. (CJ) DECISION: use the NLE form.
 - A serial can have more than one Subscription at the same time. This
   happens when the Thermostat wakes early or thinks that a connection is
   dead (after about 360 s idle). Push to all of them. Remove only the one
-  that ends. (CJ)
+  that ends. (CJ) This is normal on the live Thermostat. The NLE add-on log
+  shows new Subscriptions 125 s to 155 s after the previous one, while the
+  old one stays held to 290 s. Do not log an overlap above debug level.
 - Limit: 100 Subscriptions for each serial. Over the limit, write
   `{"objects": []}` and EOF. (NLE)
 - Pending buffer: when a push cannot go out, append its objects to a list
@@ -441,6 +443,14 @@ carry a stale field.
 
 A bucket that a later subscribe sends (section 6.2) is the full stored copy.
 This is the NLE behavior.
+
+DECISION: skip a command that changes nothing. If every field in the delta
+already has that value in the stored bucket, do not store and do not push.
+For fan `on`, skip the command while the fan timer is active. Reason: the
+live automation `automation.climate_control` calls `set_hvac_mode heat_cool`
+and `set_fan_mode on` on every temperature sensor change. The NLE add-on log
+(2026-10-19) shows these calls about two times each minute. Each call pushed
+a 7 KB full bucket and woke the Thermostat. NLE has no such check.
 
 ### 9.2 HVAC mode
 
@@ -592,7 +602,7 @@ last `300 + 60` seconds. (DECISION)
 |---|---|---|
 | 1 | The exact subscribe path. NLE routes `POST /nest/transport` and `POST /nest/transport/<v>/subscribe`. CJ writes `POST /{czid}/subscribe`. | The catch-all in section 3 takes all forms. Log the path at debug level on first boot. |
 | 2 | `current_temperature` is in `shared` (CJ bucket table, NLE) or `device` (CJ "Read device state" table). | Read `shared` first, then `device`. |
-| 3 | Does an unpaired Thermostat need the user bucket before it processes the structure bucket? Is Jeff's Thermostat paired with the NLE add-on now, and with what user ID? | Section 6.5. A capture of one subscribe request shows the `user.*` and `structure.*` keys that the Thermostat knows. |
+| 3 | Does an unpaired Thermostat need the user bucket before it processes the structure bucket? Which `user.*` and `structure.*` keys does the live Thermostat know? | Section 6.5 takes the keys from the first subscribe request, so no capture is necessary. Log the request objects at debug level so that the first boot records them. |
 | 4 | The weather host and the JSON format. | Return `{}` in v1. |
 | 5 | The eco state field: `device.eco` (dict, NLE) or `device.eco_mode` (JSON string, CJ). | Read both. |
 | 6 | The temperature range on the Thermostat dial. | 9 °C to 32 °C in v1. Check against the Thermostat. |
@@ -622,3 +632,4 @@ Each case is a request and the exact response or stored state.
 17. Temperature in `range` writes low and high with `target_change_pending: true`.
 18. Eco exit pushes the structure delta and the device `eco` delta in one chunk.
 19. Store round trip: buckets survive an unload and a new setup.
+20. A mode command with the stored mode, and fan `on` while the timer is active, store nothing and push nothing.
