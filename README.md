@@ -30,8 +30,9 @@ Jeff installing it once, by hand, with a USB cable.
 
 | | |
 |---|---|
-| Research | Done — see `reference/PLAN.md` |
-| Thermostat flashed | No |
+| Research | Done. See `reference/PLAN.md` |
+| Thermostat flashed | Yes. It connects to the NLE add-on (Jeff's fork) on port 9543. |
+| Protocol spec | Done. See `PROTOCOL.md` |
 | Integration | Not started |
 
 ## Decisions
@@ -91,6 +92,7 @@ only way in. That is the firmware, not the server — the two decisions are inde
 
 ```
 CONTEXT.md            Glossary. Source of truth for what each term means.
+PROTOCOL.md           Protocol spec for the Integration. The build reads only this file.
 reference/            Research materials. Read-only in spirit — nothing here is code we ship.
   NoLongerEvil-SelfHosted/
                       Reference clone of codykociemba/NoLongerEvil-SelfHosted (MIT),

@@ -46,6 +46,46 @@ _Avoid_: "our address", "the endpoint" (that is the Thermostat's copy of this va
 The small HTTP API the Firmware serves on the Thermostat itself, used to read and set its Endpoint.
 _Avoid_: "the device API", "the local API".
 
+### Protocol
+
+`PROTOCOL.md` has the full rules for these terms.
+
+**Bucket**:
+One named container of Thermostat state, for example `shared.<serial>`. It has an Object key, a Revision, a Timestamp, and a value dict.
+_Avoid_: "object" alone (the wire format says `objects`, but this repo says Bucket), "record".
+
+**Object key**:
+The name of a Bucket, in the form `<type>.<id>`. The type is `device`, `shared`, `structure`, `user`, `schedule`, or another Bucket type.
+_Avoid_: "bucket ID".
+
+**Revision**:
+The integer counter of a Bucket. It goes up by one on each change. It is used only for the conditional write on `shared`.
+_Avoid_: "version".
+
+**Timestamp**:
+The time of the last change to a Bucket, in milliseconds since the Unix epoch. It is the only value that decides which copy of a Bucket is newer. Zero means "no data".
+_Avoid_: "updatedAt" (an NLE server field that the Firmware does not need).
+
+**Subscribe**:
+The long-poll request from the Thermostat. The Integration holds the response open and sends data on it.
+_Avoid_: "poll" alone, "listen".
+
+**Subscription**:
+One held Subscribe connection. One Thermostat can have more than one Subscription at the same time.
+_Avoid_: "session" (the Thermostat sends a session value, but it is the same for all of its Subscriptions).
+
+**Push**:
+Data that the Integration writes on a held Subscription. It wakes the Thermostat.
+_Avoid_: "notify", "tickle" (a tickle is an empty close, for shutdown only).
+
+**Put**:
+A request from the Thermostat that writes changed fields into Buckets.
+_Avoid_: "update" alone.
+
+**Hold time**:
+How long the Integration keeps a Subscription open with no data before it closes it. It must be shorter than `X-nl-suspend-time-max`.
+_Avoid_: "timeout" alone.
+
 ### Identity
 
 **Model string**:
